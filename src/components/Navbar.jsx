@@ -1,23 +1,30 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 let tabs = [
-  { id: 'world', label: 'World' },
-  { id: 'ny', label: 'N.Y.' },
-  { id: 'business', label: 'Business' },
-  { id: 'arts', label: 'Arts' },
-  { id: 'science', label: 'Science' },
+  { id: 'home', label: 'Inicio', href: '/' },
+  { id: 'products', label: 'Productos', href: '/productos' },
+  { id: 'contact', label: 'Contacto', href: '/contacto' },
 ]
 
 const Navbar = () => {
+  const location = useLocation()
   let [activeTab, setActiveTab] = useState(tabs[0].id)
+
+  useEffect(() => {
+    const currentTab = tabs.find((tab) => tab.href === location.pathname)
+    if (currentTab) {
+      setActiveTab(currentTab.id)
+    }
+  }, [location.pathname])
 
   return (
     <div className="flex space-x-1">
       {tabs.map((tab) => (
-        <button
+        <NavLink
+          to={tab.href}
           key={tab.id}
-          onClick={() => setActiveTab(tab.id)}
           className={`${
             activeTab === tab.id ? '' : 'hover:text-white/60'
           } relative rounded-full px-3 py-1.5 text-sm font-medium text-white outline-sky-400 transition focus-visible:outline-2`}
@@ -34,7 +41,7 @@ const Navbar = () => {
             />
           )}
           {tab.label}
-        </button>
+        </NavLink>
       ))}
     </div>
   )
