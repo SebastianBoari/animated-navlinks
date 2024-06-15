@@ -8,20 +8,25 @@ import App from './App.jsx'
 
 import './index.css'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+    },
+    {
+      path: '/contacto',
+      element: <Contact />,
+    },
+    {
+      path: '/productos',
+      element: <Products />,
+    },
+  ],
   {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/contacto',
-    element: <Contact />,
-  },
-  {
-    path: '/productos',
-    element: <Products />,
-  },
-])
+    basename: '/animated-navlinks',
+  }
+)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
