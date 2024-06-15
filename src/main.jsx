@@ -25,7 +25,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className="bg-slate-400">
+    <div className="bg-[#ECE6DA] w-full h-lvh flex items-center justify-center">
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>

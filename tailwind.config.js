@@ -5,7 +5,6 @@ export default {
     extend: {
       fontFamily: {
         serif: ['Cormorant Garamond', 'serif'],
-        sans: ['Open Sans', 'sans-serif'],
       },
     },
   },
